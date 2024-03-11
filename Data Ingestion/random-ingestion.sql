@@ -19,3 +19,24 @@ SET maturity =
         WHEN RANDOM() >= 0.33 AND RANDOM() < 0.66 THEN 'Mid-size'
         ELSE 'Startup'
     END;
+
+--------------------------------------------------------------------------------------
+
+UPDATE public."orders_fact"
+SET return_flag =
+    CASE 
+        WHEN RANDOM() < 0.10 THEN 1
+        ELSE 0
+    END;
+
+--------------------------------------------------------------------------------------
+
+UPDATE public."returns_fact"
+SET return_cause =
+    CASE 
+        WHEN RANDOM() < 0.20 THEN 'damaged'
+        WHEN RANDOM() >= 0.20 AND RANDOM() < 0.40 THEN 'wrong_item'
+		WHEN RANDOM() >= 0.40 AND RANDOM() < 0.60 THEN 'change mind'
+        WHEN RANDOM() >= 0.60 AND RANDOM() < 0.80 THEN 'late delivary'
+        ELSE 'poor_quality'
+    END;
