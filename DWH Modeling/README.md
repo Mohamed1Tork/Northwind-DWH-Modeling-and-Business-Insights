@@ -40,3 +40,19 @@ From the database schema, we defined the dimensions of our model as follows:
 > Fields: *(DateKey, OrderDate, DayOfWeek, DayName, DayOfMonth, DayOfYear, IsWeekend, IsHoliday, IsRamadan, WeekOfYear, MonthName, Month, Quarter, Year)*
 >
 This dimensional model serves as the foundation for our data warehouse, providing a structured framework for efficient data retrieval and insightful analysis.
+
+![OrdersFact (1)](https://github.com/mennamamdouh/Northwind-DWH-Modeling-and-Business-Insights/assets/155321343/b546d829-3552-4875-a69d-ba16282bb158)
+![ReturnsFact](https://github.com/mennamamdouh/Northwind-DWH-Modeling-and-Business-Insights/assets/155321343/63a8c8d8-3455-497c-9970-2548405a15dd)
+
+## **Indexing Strategy for Northwind Data Warehouse**
+
+After creating the dimensional model for the Northwind data warehouse, the next step involves optimizing query performance by creating indexes on columns that are frequently used in queries. The following columns have been identified as crucial for efficient query processing based on the business requirements:
+
+1. **RequiredDate**: Indexing this column will facilitate quicker retrieval of data related to order requirements, especially for analyzing time-based trends such as seasonal fluctuations.
+2. **TotalSales**: This derived column in the FactOrders table represents the total sales amount ((unit price * quantity) - Discount). Indexing it will expedite calculations involving sales figures, which are pivotal for various business analyses.
+3. **CategoryName**: A bitmap index is recommended for this column to swiftly identify best-selling product categories. This will aid in efficiently managing inventory and ensuring adequate stock availability, particularly during peak seasons or holidays.
+4. Year: Grouping data by year is a common requirement across different analyses. Indexing the year column with a bitmap index will enhance the performance of queries involving temporal aggregations and comparisons.
+5. **ReturnCause**: Utilizing a bitmap index for this column will streamline the process of categorizing and analyzing return causes. This will enable prompt identification of recurring issues, whether they stem from customers, suppliers, shippers, or internal processes, facilitating targeted remedial actions.
+6. **Maturity**: Indexing this column, which categorizes customers into startup, midsize, and corporate segments based on their sales performance, will expedite analyses aimed at identifying and addressing deviations in customer behavior. This proactive approach can help enhance customer engagement and retention.
+7. **Foreign Key Indexing**: Additionally, indexes have been created for all foreign key columns in the data warehouse schema. This optimization enhances query performance by expediting joins and filtering operations involving foreign key relationships, ensuring swift data retrieval and improving overall analytical efficiency.
+
