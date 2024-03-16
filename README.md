@@ -49,7 +49,7 @@ After creating the dimensional model for the Northwind data warehouse, the next 
 5. **ReturnCause**
 6. **Maturity**
 7. **Foreign Key Indexing**
-> More details included in the README file in `DWH Modeling` folder
+> More details about the indexing strategy and dimensional modeling included in the README file in `DWH Modeling` folder
 
 ## **Folder Contents Explanation:**
 
